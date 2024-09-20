@@ -262,13 +262,20 @@ export default function Home() {
             <h2 className="mb-2">Select Files</h2>
             <div id="file-tree" className="text-sm">
               {fileTree.map((file, index) => (
-                <div key={index} style={{ marginLeft: `${file.indentLevel * 10}px` }}>
+                <div
+                  key={index}
+                  style={{ marginLeft: `${file.indentLevel * 10}px` }}
+                  onClick={() => {
+                    if (file.type === 'dir') {
+                      handleFolderClick(file.path)
+                    }
+                  }}
+                >
                   <label
                     className={twMerge(
-                      'text-secondary opacity-90',
+                      'flex gap-1 text-secondary opacity-80',
                       selectedFiles.includes(file) && 'opacity-100',
-                      file.type === 'dir' && 'text-primary',
-                      expandedFolders[file.path] && 'font-bold'
+                      file.type === 'dir' && 'text-primary'
                     )}
                   >
                     {file.type === 'dir' ? (
@@ -277,13 +284,13 @@ export default function Home() {
                       </span>
                     ) : (
                       <input
-                        className="mr-2"
+                        className=""
                         type="checkbox"
                         onChange={(e) => handleSelectFile(file, e.target.checked)}
                         checked={selectedFiles.includes(file)}
                       />
                     )}
-                    {file.name}
+                    <span className="my-auto">{file.name}</span>
                   </label>
                 </div>
               ))}
