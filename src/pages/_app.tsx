@@ -1,21 +1,21 @@
-import Head from 'next/head'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import '../styles/index.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const title = 'RepoGPT'
+  const title = 'RepoEnvGenerator'
   const description =
     "Merge github's repository files into text to send it to GPT API or to copy and paste it into ChatGPT."
-  const keywords = 'gpt, openai, github, repository, merge, text, chat, chatgpt, repogpt'
+  const keywords = 'gpt, openai, github, repository, merge, text, chat, chatgpt, repoenvgen'
   const author = 'Mark Kop'
-  const imageUrl = 'https://repogpt.markkop.dev/og.png'
-  const url = 'https://repogpt.markkop.dev'
+  const imageUrl = 'https://repoenvgen.markkop.dev/og.png'
+  const url = 'https://repoenvgen.markkop.dev'
   const twitterHandle = '@HeyMarkKop'
 
   return (
     <>
       <Head>
-        <title>RepoGPT</title>
+        <title>RepoEnvGenerator</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />

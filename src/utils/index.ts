@@ -1,4 +1,3 @@
-import { Message } from "../types"
 
 export async function handleCopyToClipboard(
   mergedFiles: string,
@@ -97,4 +96,32 @@ export function formatDate(date: Date) {
     second: 'numeric',
     timeZoneName: 'short',
   })
+}
+
+export async function generateEnvExample(repoUrl: string, token: string, selectedFiles: any[]): Promise<string> {
+  const uniqueKeys = new Set<string>()
+  for (const file of selectedFiles) {
+    try {
+      const content = await githubAPIRequest(file.url, token, true)
+      const keys = extractEnvKeys(content)
+      keys.forEach(key => uniqueKeys.add(key))
+    } catch (error) {
+      console.error(`Error processing file ${file.path}:`, error)
+    }
+  }
+  return Array.from(uniqueKeys).sort().map(key => `${key}=`).join('\n')
+}
+
+function extractEnvKeys(content: string): string[] {
+  const regex = /process\.env\.([A-Z0-9_]+)/g
+  const keys: string[] = []
+  let match
+
+  while ((match = regex.exec(content)) !== null) {
+    if (match[1]) {
+      keys.push(match[1])
+    }
+  }
+
+  return keys
 }
