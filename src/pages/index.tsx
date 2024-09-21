@@ -210,24 +210,28 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <button onClick={handleGenerateEnvExample} className="" disabled={isGeneratingEnvExample}>
-              {isGeneratingEnvExample ? 'Generating...' : 'Generate .env.example'}
-            </button>
           </div>
 
           <div className="flex-grow flex flex-col">
             <div className="flex space-x-2 mb-2">
               <h2>.env.example</h2>
               <button
+                onClick={handleGenerateEnvExample}
+                className="text-xs px-1 py-0 w-20"
+                disabled={isGeneratingEnvExample}
+                id="generate-env-example"
+              >
+                {isGeneratingEnvExample ? <SpinnerIcon className="h-3 w-3" /> : 'Generate'}
+              </button>
+              <button
                 onClick={() => handleCopyToClipboard(envExampleContent, setShowCopyConfirmation, navigator.clipboard)}
                 className="text-xs px-1 py-0"
               >
                 {showCopyConfirmation ? 'Copied!' : 'Copy'}
               </button>
-              {isGeneratingEnvExample && <SpinnerIcon />}
             </div>
             <textarea
-              className="w-full flex-grow text-3xs"
+              className="w-full text-3xs"
               id="output"
               rows={10}
               cols={80}

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "og": "node ./src/scripts/screenshot.js http://localhost:3001"
+    "og": "node ./src/scripts/screenshot.js http://localhost:3000"
   },
   "dependencies": {
     "dotenv": "^16.1.4",

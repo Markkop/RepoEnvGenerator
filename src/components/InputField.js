@@ -1,9 +1,9 @@
+import { useState } from 'react'
+import { CheckIcon } from './CheckIcon'
+import { ExternalLinkIcon } from './ExternalLinkIcon'
 import { EyeIcon } from './EyeIcon'
 import { EyeSlashIcon } from './EyeSlashIcon'
-import { ExternalLinkIcon } from './ExternalLinkIcon'
 import { SpinnerIcon } from './SpinnerIcon'
-import { CheckIcon } from './CheckIcon'
-import { useState } from 'react'
 
 export function InputField({ field, isFetchingFileTree = false }) {
   const [showSaved, setShowSaved] = useState(false)
@@ -30,7 +30,7 @@ export function InputField({ field, isFetchingFileTree = false }) {
     }
     return (
       <input
-        className="flex-grow w-96"
+        className="flex-grow md:w-72 lg:w-96"
         type={field.type}
         id={field.id}
         name={field.id}
